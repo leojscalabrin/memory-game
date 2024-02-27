@@ -20,6 +20,7 @@
     display: flex;
     flex-wrap: wrap;
     box-shadow: 4px 3px 1px red;
+    perspective: 1000px;;
   }
   
   .card {
@@ -29,6 +30,13 @@
     margin: 5px;
     cursor: pointer;
     transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .9s;
+  }
+
+  .card:active {
+    transform: scale(0.97);
+    transition: transform .3s;
   }
   
   .card-front,
@@ -37,4 +45,15 @@
     height: 100%;
     padding: 20px;
     position: absolute;
+    backface-visibility: hidden;
+  }
+
+  .card-front {
+    transform: rotateY(180deg);
+  }
+
+  /* flip card animation */
+
+  .card.flip {
+    transform: rotateY(180deg);
   }
